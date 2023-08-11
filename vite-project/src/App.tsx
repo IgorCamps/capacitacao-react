@@ -1,34 +1,73 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [contador, setContador] = useState(0)
+  const [nome1, setNome1] = useState("Igor")
+  const [nome2, setNome2] = useState("Pedro")
+  const nomesJuntos = nome1 + " + " + nome2
+
+
+  function soma(){
+    setContador(
+      (antigo)=> {
+        return antigo + 1
+      }
+    )
+  }
+
+  function original(){
+    setContador(
+      (antigo)=> {
+        return 0
+      }
+    )
+  }
+
+  function subtrai(){
+    setContador(
+      (antigo)=> {
+          return antigo - 1
+      }
+    )
+  }
+/*
+  function mudaNome1(evento: React.ChangeEvent<HTMLInputElement>){
+    setNome1(evento.target.value)
+  }
+
+  function mudaNome2(evento: React.ChangeEvent<HTMLInputElement>){
+    setNome2(evento.target.value)
+  }
+
+      <input type='text' value={nome1} onChange={mudaNome1}></input>
+    <br/>
+    <input type='text' value={nome2} onChange={mudaNome2}></input>
+
+*/
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    
+    <div id='oi' className='oi'>
+      
+    <hr/>
+    
+    <h1>Contador</h1>
+
+    <p> {contador} </p>
+  
+    <button onClick={soma}> + </button>
+    <button onClick={original}>Zerar</button>
+    <button onClick={subtrai}> - </button>
+    <hr/>
+   
+    </div>
+
+
   )
 }
 
